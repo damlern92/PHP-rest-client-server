@@ -87,10 +87,11 @@
 
 
 
-
+                            <!-- Show the message from the success object: -->
                             <div id="success" style="display: none;"></div>
 
-                            <!-- display none: -->
+
+                            
                             <form id="register-form" action="#" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" name="username1" id="username1" tabindex="1" class="form-control" placeholder="Username" value="" >
@@ -130,77 +131,54 @@
 
 <script>
 
+//REGISTRATION:
+// Ajax request:
+$(document).ready(function () {
+    $(".reg").click(function (e) {
 
-    // Ajax request:
-    $(document).ready(function () {
-        $(".reg").click(function (e) {
+        e.preventDefault(); // Don't refresh
 
-            e.preventDefault(); // Don't refresh
+        var username = $("#username1").val();
+        var email = $("#email1").val();
+        var password = $("#password1").val();
+        var conf_pass = $("#confirm_password1").val();
+        var action = "register";
 
-            var username = $("#username1").val();
-            var email = $("#email1").val();
-            var password = $("#password1").val();
-            var conf_pass = $("#confirm_password1").val();
-            var action = "register";
-
-            $.ajax({
-                method:"POST",
-                url: "classes/Users.php",
-                data:{"action":action, "username":username, "email":email, "password":password, "conf_pass":conf_pass},
-                // success object:
-                success: function(data){
-                    // append data:
-                    $("#success").append(data.message).css("display","block");
-                }
-
-            });
-
-
-
-
+        $.ajax({
+            method:"POST",
+            url: "classes/Users.php",
+            data:{"action":action, "username":username, "email":email, "password":password, "conf_pass":conf_pass},
+            // success object:
+            success: function(data){
+                // append data:
+                $("#success").append(data.message).css("display","block");
+            }
 
         });
 
     });
 
+});
 
 
+// From bootstrap template:
+$(function() {
 
+    $('#login-form-link').click(function(e) {
+        $("#login-form").delay(100).fadeIn(100);
+        $("#register-form").fadeOut(100);
+        $('#register-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+    $('#register-form-link').click(function(e) {
+        $("#register-form").delay(100).fadeIn(100);
+        $("#login-form").fadeOut(100);
+        $('#login-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
 
-
-
-
-
-
-
-
-
-    $(function() {
-
-        $('#login-form-link').click(function(e) {
-            $("#login-form").delay(100).fadeIn(100);
-            $("#register-form").fadeOut(100);
-            $('#register-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        $('#register-form-link').click(function(e) {
-            $("#register-form").delay(100).fadeIn(100);
-            $("#login-form").fadeOut(100);
-            $('#login-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-
-
-
-
-
-
-        });
-
-
-
-
+});
 
 </script>
