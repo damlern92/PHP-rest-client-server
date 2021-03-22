@@ -2,20 +2,17 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/rest/server/config/config.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/rest/server/javascript_helper.php");
 
-class Backend
-{
+class Backend{
     protected $db;
     protected $product;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->db = new Database();
         $this->product = new Products();
     }
 
 
-    protected function _licence_auth($client_licence)
-    {
+    protected function _licence_auth($client_licence){
         try {
             return $this->product->checkLicence($client_licence);
 

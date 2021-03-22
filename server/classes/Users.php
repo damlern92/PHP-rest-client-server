@@ -9,19 +9,16 @@ if(isset($_POST['action']) && $_POST['action'] == "register") {
 }
 
 
-class Users
-{
+
+class Users{
+
     private $db;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->db = new Database();
     }
 
-
-
-    public function userRegister()
-    {
+    public function userRegister(){
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -60,8 +57,7 @@ class Users
     } // End of userRegister method
 
 
-    public function userLogin()
-    {
+    public function userLogin(){
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -76,7 +72,7 @@ class Users
         }else{
             echo "Wrong username or password";
         }
-    }
+    } // End of user login method
 
 
 } // End of class Users

@@ -87,8 +87,11 @@
 
 
 
+
+
                             <!-- Show the message from the success object: -->
                             <div id="success" style="display: none;"></div>
+                            
 
 
                             
@@ -161,7 +164,7 @@ $(document).ready(function () {
 });
 
 
-// From bootstrap template:
+// JQUERY animation for login-register form:
 $(function() {
 
     $('#login-form-link').click(function(e) {
